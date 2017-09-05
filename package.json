@@ -1,6 +1,6 @@
 {
   "name": "axios-progress-bar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Slim progress bar (NProgress) for Web applications that use Axios for HTTP requests.",
   "main": "dist/index.js",
   "scripts": {
@@ -12,6 +12,13 @@
   },
   "author": "rikmms <sousa.ricardo10@gmail.com>",
   "license": "ISC",
+  "keywords": [
+    "axios",
+    "http",
+    "progress",
+    "bar",
+    "loading"
+  ],
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
