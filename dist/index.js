@@ -108,40 +108,40 @@ var calculatePercentage = function calculatePercentage(loaded, total) {
   return Math.floor(loaded * 1.0) / total;
 };
 
-var requestsCounter = 0;
+function loadProgressBar(config) {
+  var requestsCounter = 0;
 
-var setupStartProgress = function setupStartProgress() {
-  _axios2.default.interceptors.request.use(function (config) {
-    requestsCounter++;
-    _nprogress2.default.start();
-    return config;
-  });
-};
-
-var setupUpdateProgress = function setupUpdateProgress() {
-
-  var update = function update(e) {
-    var percentage = calculatePercentage(e.loaded, e.total);
-    _nprogress2.default.inc(percentage);
+  var setupStartProgress = function setupStartProgress() {
+    _axios2.default.interceptors.request.use(function (config) {
+      requestsCounter++;
+      _nprogress2.default.start();
+      return config;
+    });
   };
 
-  _axios2.default.defaults.onDownloadProgress = update;
-  _axios2.default.defaults.onUploadProgress = update;
-};
+  var setupUpdateProgress = function setupUpdateProgress() {
 
-var setupStopProgress = function setupStopProgress() {
-  _axios2.default.interceptors.response.use(function (response) {
-    if (--requestsCounter === 0) _nprogress2.default.done();
+    var update = function update(e) {
+      var percentage = calculatePercentage(e.loaded, e.total);
+      _nprogress2.default.inc(percentage);
+    };
 
-    return response;
-  }, function (error) {
-    if (--requestsCounter === 0) _nprogress2.default.done();
+    _axios2.default.defaults.onDownloadProgress = update;
+    _axios2.default.defaults.onUploadProgress = update;
+  };
 
-    return Promise.reject(error);
-  });
-};
+  var setupStopProgress = function setupStopProgress() {
+    _axios2.default.interceptors.response.use(function (response) {
+      if (--requestsCounter === 0) _nprogress2.default.done();
 
-function loadProgressBar(config) {
+      return response;
+    }, function (error) {
+      if (--requestsCounter === 0) _nprogress2.default.done();
+
+      return Promise.reject(error);
+    });
+  };
+
   _nprogress2.default.configure(config);
   setupStartProgress();
   setupUpdateProgress();
