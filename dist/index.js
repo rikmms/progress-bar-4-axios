@@ -90,7 +90,7 @@ module.exports = __webpack_require__(1);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.load = load;
+exports.loadProgressBar = loadProgressBar;
 
 __webpack_require__(2);
 
@@ -108,22 +108,42 @@ var calculatePercentage = function calculatePercentage(loaded, total) {
   return Math.floor(loaded * 1.0) / total;
 };
 
+var requestsCounter = 0;
+
+var setupStartProgress = function setupStartProgress() {
+  _axios2.default.interceptors.request.use(function (config) {
+    requestsCounter++;
+    _nprogress2.default.start();
+    return config;
+  });
+};
+
 var setupUpdateProgress = function setupUpdateProgress() {
-  _axios2.default.defaults.onDownloadProgress = function (e) {
+
+  var update = function update(e) {
     var percentage = calculatePercentage(e.loaded, e.total);
-    _nprogress2.default.set(percentage);
+    _nprogress2.default.inc(percentage);
   };
+
+  _axios2.default.defaults.onDownloadProgress = update;
+  _axios2.default.defaults.onUploadProgress = update;
 };
 
 var setupStopProgress = function setupStopProgress() {
   _axios2.default.interceptors.response.use(function (response) {
-    _nprogress2.default.done(true);
+    if (--requestsCounter === 0) _nprogress2.default.done();
+
     return response;
+  }, function (error) {
+    if (--requestsCounter === 0) _nprogress2.default.done();
+
+    return Promise.reject(error);
   });
 };
 
-function load(config) {
+function loadProgressBar(config) {
   _nprogress2.default.configure(config);
+  setupStartProgress();
   setupUpdateProgress();
   setupStopProgress();
 }
