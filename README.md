@@ -5,7 +5,7 @@ This module provides a simple usage of a progress bar for the HTTP requests made
 **Attention:** This module is not bound to any framework. You can use it in any Web application that uses axios.
 
 ### Demo
-![demo](https://dl.dropboxusercontent.com/content_link/Mb6ivd9FE3OC5LWsPsHzl8nWYOmvjZmSR52OCB0egz7QhwgaH2bAWQ4AsrpAeCKG/file)
+![demo](https://github.com/rikmms/progress-bar-4-axios/blob/master/demo_axios_progress_bar.gif?raw=true)
 
 ### Installation
 It's available through the NPM package:
