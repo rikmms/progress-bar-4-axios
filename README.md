@@ -10,7 +10,7 @@ This module provides a simple usage of a progress bar for the HTTP requests made
 ### Installation
 It's available through the NPM package:
 
-    npm install --save axios
+    npm install --save axios (peer dependency)
     npm install --save axios-progress-bar
 
 Or via CDN:
