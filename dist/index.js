@@ -109,6 +109,7 @@ var calculatePercentage = function calculatePercentage(loaded, total) {
 };
 
 function loadProgressBar(config) {
+
   var requestsCounter = 0;
 
   var setupStartProgress = function setupStartProgress() {
@@ -120,26 +121,25 @@ function loadProgressBar(config) {
   };
 
   var setupUpdateProgress = function setupUpdateProgress() {
-
     var update = function update(e) {
-      var percentage = calculatePercentage(e.loaded, e.total);
-      _nprogress2.default.inc(percentage);
+      return _nprogress2.default.inc(calculatePercentage(e.loaded, e.total));
     };
-
     _axios2.default.defaults.onDownloadProgress = update;
     _axios2.default.defaults.onUploadProgress = update;
   };
 
   var setupStopProgress = function setupStopProgress() {
-    _axios2.default.interceptors.response.use(function (response) {
+    var responseFunc = function responseFunc(response) {
       if (--requestsCounter === 0) _nprogress2.default.done();
-
       return response;
-    }, function (error) {
-      if (--requestsCounter === 0) _nprogress2.default.done();
+    };
 
+    var errorFunc = function errorFunc(error) {
+      if (--requestsCounter === 0) _nprogress2.default.done();
       return Promise.reject(error);
-    });
+    };
+
+    _axios2.default.interceptors.response.use(responseFunc, errorFunc);
   };
 
   _nprogress2.default.configure(config);
