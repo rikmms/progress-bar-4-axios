@@ -5,7 +5,7 @@ This module provides a simple usage of a progress bar for the HTTP requests made
 **Attention:** This module is not bound to any framework. You can use it in any Web application that uses axios.
 
 ### Demo
-![demo](https://github.com/rikmms/progress-bar-4-axios/blob/master/demo_axios_progress_bar.gif?raw=true)
+![demo](https://raw.githubusercontent.com/rikmms/progress-bar-4-axios/master/demo_axios_progress_bar.gif)
 
 ### Installation
 It's available through the NPM package:
@@ -51,7 +51,7 @@ Simple as invoke (only one time) the function: `loadProgressBar(config)`, where 
 ```
 
 ### Tip
-By default, the minimal CSS ([nprogress.css](https://www.npmjs.com/package/nprogress#customization)) is automatically imported into the HTML. However, It's possible to override the properties or set new ones with a custom CSS.
+By default, the minimal CSS ([nprogress.css](https://github.com/rstacruz/nprogress/blob/master/nprogress.css)) is automatically imported into the HTML. However, It's possible to override the properties or set new ones with a custom CSS.
 
 In the next example, the custom CSS only changes the color of the progress bar and the spinner to red (It's necessary to use the !import keyword, to override the default value).
 ```html
@@ -86,7 +86,7 @@ In the next example, the custom CSS only changes the color of the progress bar a
     
 </html>
 ```
-![demo-red](https://github.com/rikmms/progress-bar-4-axios/blob/master/demo_axios_progress_bar.gif?raw=true)
+![demo-red](https://raw.githubusercontent.com/rikmms/progress-bar-4-axios/master/demo_axios_progress_bar_red.gif)
 
 
 ### Bugs/Requests
