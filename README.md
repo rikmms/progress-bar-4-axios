@@ -62,7 +62,7 @@ import 'axios-progress-bar/dist/nprogress.css'
 ```
 
 ### Tip
-By default, the minimal CSS ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css)) is used. However, It's possible to override the properties or set new ones with a custom CSS.
+The minimal CSS file is used with the properties from the [nprogress style](https://github.com/rstacruz/nprogress/blob/master/nprogress.css). However, It's possible to override the properties or set new ones with a custom CSS.
 
 In the next example, the custom CSS only changes the color of the progress bar and the spinner to red (It's necessary to use the !import keyword, to override the default value).
 ```html
