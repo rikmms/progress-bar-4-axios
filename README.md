@@ -10,31 +10,42 @@ This module provides a simple usage of a progress bar for the HTTP requests made
 ### Installation
 It's available through the NPM package:
 
-    npm install --save axios (peer dependency)
+    npm install --save axios
     npm install --save axios-progress-bar
 
 Or via CDN:
-
-    <script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/index.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-### Usage
-Simple as invoke (only one time) the function: `loadProgressBar(config)`, where the config argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration).
-
-#### An example in ES6 using the new import statement
-```js
-    import { loadProgressBar } from 'axios-progress-bar'
-
-    loadProgressBar(configs)
-    ...
+```html
+<script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ````
 
-#### An example using plain HTML and Javascript in the Browser
+### Usage
+Simple as invoke (only one time) the function: `loadProgressBar(config)`, where the config argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration). 
+
+__Also, you need to import the minimal CSS file ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css)).__
+
+
+#### Example in ES6 using the new import statement
+```js
+import { loadProgressBar } from 'axios-progress-bar'
+
+loadProgressBar(configs)
+...
+````
+Don't forget to import the minimal CSS in the HTML, or through JavaScript with some module bundler like [webpack](https://webpack.js.org/guides/asset-management/#loading-css).
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
+```
+```js
+import 'progress-bar-4-axios/dist/nprogress.css'
+```
+
+#### Example using plain HTML and Javascript in the Browser
 ```html
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        ...
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
     </head>
     <body>
         ...
@@ -51,13 +62,14 @@ Simple as invoke (only one time) the function: `loadProgressBar(config)`, where 
 ```
 
 ### Tip
-By default, the minimal CSS ([nprogress.css](https://github.com/rstacruz/nprogress/blob/master/nprogress.css)) is automatically imported into the HTML. However, It's possible to override the properties or set new ones with a custom CSS.
+By default, the minimal CSS ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css)) is used. However, It's possible to override the properties or set new ones with a custom CSS.
 
 In the next example, the custom CSS only changes the color of the progress bar and the spinner to red (It's necessary to use the !import keyword, to override the default value).
 ```html
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
         <style type="text/css">
             #nprogress .bar {
                 background: red !important;
@@ -91,3 +103,6 @@ In the next example, the custom CSS only changes the color of the progress bar a
 
 ### Bugs/Requests
 Write them in the repository [issues](https://github.com/rikmms/progress-bar-4-axios/issues).
+
+### Major changes
+- version 1.1.0 - [Split the CSS](https://webpack.js.org/guides/production/#split-css) into a separate file. With this change, it's necessary to import the minimal CSS file manually.
