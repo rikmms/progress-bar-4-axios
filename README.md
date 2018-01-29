@@ -105,4 +105,4 @@ In the next example, the custom CSS only changes the color of the progress bar a
 Write them in the repository [issues](https://github.com/rikmms/progress-bar-4-axios/issues).
 
 ### Major changes
-- version 1.1.1 - [Split the CSS](https://webpack.js.org/guides/production/#split-css) into a separate file. With this change, it's necessary to import the minimal CSS file manually.
+- version 1.1.0 - [Split the CSS](https://webpack.js.org/guides/production/#split-css) into a separate file. With this change, it's necessary to import the minimal CSS file manually.
