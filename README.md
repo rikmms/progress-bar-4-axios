@@ -37,7 +37,7 @@ Don't forget to import the minimal CSS in the HTML, or through JavaScript with s
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
 ```
 ```js
-import 'progress-bar-4-axios/dist/nprogress.css'
+import 'axios-progress-bar/dist/nprogress.css'
 ```
 
 #### Example using plain HTML and Javascript in the Browser
