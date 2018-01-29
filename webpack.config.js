@@ -1,31 +1,29 @@
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: [
     './src/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'index.js',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['react', 'es2015', 'stage-1']
-          }
-        }
-      },
-      {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {loader: 'css-loader', options: { minimize: true }}
+          ]
+        })
       }
     ]
   },
+  plugins: [ new ExtractTextPlugin('nprogress.css'), new UglifyJsPlugin() ],
   externals: [{ axios: 'axios' }]
 }
