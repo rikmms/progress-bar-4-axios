@@ -1,11 +1,13 @@
 # Axios Progress Bar
 
-This module provides a simple usage of a progress bar for the HTTP requests made by Web applications that use the library [axios](https://www.npmjs.com/package/axios). It's high inspired in the module [angular-loading-bar](https://www.npmjs.com/package/angular-loading-bar) and uses the awesome [nprogress](https://www.npmjs.com/package/nprogress) module to display the loading bar in the Browser.
+This module aims to provide a simple usage of a progress bar for the HTTP requests made by Web applications that use the library [axios](https://www.npmjs.com/package/axios). It's high inspired in the module [angular-loading-bar](https://www.npmjs.com/package/angular-loading-bar) and uses the awesome [nprogress](https://www.npmjs.com/package/nprogress) module to display the loading bar in the Browser.
 
 **Attention:** This module is not bound to any framework. You can use it in any Web application that uses axios.
 
 ### Demo
 ![demo](https://raw.githubusercontent.com/rikmms/progress-bar-4-axios/master/demo_axios_progress_bar.gif)
+
+---
 
 ### Installation
 It's available through the NPM package:
@@ -19,20 +21,22 @@ Or via CDN:
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ````
 
+---
+
 ### Usage
-Simple as invoke (only one time) the function: `loadProgressBar(config)`, where the config argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration). 
+Invoke (only one time) the function: `loadProgressBar(config)`, where the config argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration). 
 
-__Also, you need to import the minimal CSS file ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css)).__
+__Also, you need to import the CSS file ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css)) that contains the customization of the progress bar.__
 
 
-#### Example in ES6 using the new import statement
+#### Example in ES6 using the import statement
 ```js
 import { loadProgressBar } from 'axios-progress-bar'
 
-loadProgressBar(configs)
+loadProgressBar()
 ...
 ````
-Don't forget to import the minimal CSS in the HTML, or through JavaScript with some module bundler like [webpack](https://webpack.js.org/guides/asset-management/#loading-css).
+Don't forget to import the CSS in the HTML, or through JavaScript with some module bundler like [webpack](https://webpack.js.org/guides/asset-management/#loading-css).
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
 ```
@@ -40,7 +44,7 @@ Don't forget to import the minimal CSS in the HTML, or through JavaScript with s
 import 'axios-progress-bar/dist/nprogress.css'
 ```
 
-#### Example using plain HTML and Javascript in the Browser
+#### Example using plain HTML and JavaScript in the Browser
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +66,9 @@ import 'axios-progress-bar/dist/nprogress.css'
 ```
 
 ### Tip
-The minimal CSS file is used with the properties from the [nprogress style](https://github.com/rstacruz/nprogress/blob/master/nprogress.css). However, It's possible to override the properties or set new ones with a custom CSS.
+The CSS file contains the properties from the [nprogress style](https://github.com/rstacruz/nprogress/blob/master/nprogress.css). However, It's possible to override the properties or set new ones with a custom CSS.
 
-In the next example, the custom CSS only changes the color of the progress bar and the spinner to red (It's necessary to use the !import keyword, to override the default value).
+In the next example, the custom CSS only changes the color of the progress bar and the spinner to red.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -100,6 +104,7 @@ In the next example, the custom CSS only changes the color of the progress bar a
 ```
 ![demo-red](https://raw.githubusercontent.com/rikmms/progress-bar-4-axios/master/demo_axios_progress_bar_red.gif)
 
+---
 
 ### Bugs/Requests
 Write them in the repository [issues](https://github.com/rikmms/progress-bar-4-axios/issues).
