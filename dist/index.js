@@ -82,63 +82,70 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["loadProgressBar"] = loadProgressBar;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nprogress_nprogress_css__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nprogress_nprogress_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_nprogress_nprogress_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nprogress__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nprogress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_nprogress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadProgressBar = loadProgressBar;
 
+__webpack_require__(2);
 
+var _nprogress = __webpack_require__(3);
 
-const calculatePercentage = (loaded, total) => (Math.floor(loaded * 1.0) / total)
+var _nprogress2 = _interopRequireDefault(_nprogress);
 
+var _axios = __webpack_require__(4);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var calculatePercentage = function calculatePercentage(loaded, total) {
+  return Math.floor(loaded * 1.0) / total;
+};
 
 function loadProgressBar(config) {
-  
-  let requestsCounter = 0
-  
-  const setupStartProgress = () => {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.interceptors.request.use(config => {
-      requestsCounter++
-      __WEBPACK_IMPORTED_MODULE_1_nprogress___default.a.start()
-      return config
-    })
-  }
-  
-  const setupUpdateProgress = () => {
-    const update = e => __WEBPACK_IMPORTED_MODULE_1_nprogress___default.a.inc(calculatePercentage(e.loaded, e.total))
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.onDownloadProgress = update
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.onUploadProgress = update
-  }
-  
-  const setupStopProgress = () => {
-    const responseFunc = response => {
-      if ((--requestsCounter) === 0)
-        __WEBPACK_IMPORTED_MODULE_1_nprogress___default.a.done()
-      return response
-    }
 
-    const errorFunc = error => {
-      if ((--requestsCounter) === 0) 
-        __WEBPACK_IMPORTED_MODULE_1_nprogress___default.a.done()
-      return Promise.reject(error)
-    }
+  var requestsCounter = 0;
 
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.interceptors.response.use(responseFunc, errorFunc)
-  }
+  var setupStartProgress = function setupStartProgress() {
+    _axios2.default.interceptors.request.use(function (config) {
+      requestsCounter++;
+      _nprogress2.default.start();
+      return config;
+    });
+  };
 
-  __WEBPACK_IMPORTED_MODULE_1_nprogress___default.a.configure(config)
-  setupStartProgress()
-  setupUpdateProgress()
-  setupStopProgress()
+  var setupUpdateProgress = function setupUpdateProgress() {
+    var update = function update(e) {
+      return _nprogress2.default.inc(calculatePercentage(e.loaded, e.total));
+    };
+    _axios2.default.defaults.onDownloadProgress = update;
+    _axios2.default.defaults.onUploadProgress = update;
+  };
+
+  var setupStopProgress = function setupStopProgress() {
+    var responseFunc = function responseFunc(response) {
+      if (--requestsCounter === 0) _nprogress2.default.done();
+      return response;
+    };
+
+    var errorFunc = function errorFunc(error) {
+      if (--requestsCounter === 0) _nprogress2.default.done();
+      return Promise.reject(error);
+    };
+
+    _axios2.default.interceptors.response.use(responseFunc, errorFunc);
+  };
+
+  _nprogress2.default.configure(config);
+  setupStartProgress();
+  setupUpdateProgress();
+  setupStopProgress();
 }
 
 /***/ }),
