@@ -17,7 +17,7 @@ It's available through the NPM package:
 
 Or via CDN:
 ```html
-<script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/index.js"></script>
+<script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/index.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ````
 
@@ -26,7 +26,7 @@ Or via CDN:
 ### Usage
 Invoke (only one time) the function: `loadProgressBar(config)`, where the config argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration). 
 
-__Also, you need to import the CSS file ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css)) that contains the customization of the progress bar.__
+__Also, you need to import the CSS file ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/nprogress.css)) that contains the customization of the progress bar.__
 
 
 #### Example in ES6 using the import statement
@@ -38,7 +38,7 @@ loadProgressBar()
 ````
 Don't forget to import the CSS in the HTML, or through JavaScript with some module bundler like [webpack](https://webpack.js.org/guides/asset-management/#loading-css).
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/nprogress.css" />
 ```
 ```js
 import 'axios-progress-bar/dist/nprogress.css'
@@ -49,13 +49,13 @@ import 'axios-progress-bar/dist/nprogress.css'
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/nprogress.css" />
     </head>
     <body>
         ...
     </body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/index.js"></script>
+    <script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/index.js"></script>
     
     <script type="text/javascript">
         loadProgressBar()
@@ -73,7 +73,7 @@ In the next example, the custom CSS only changes the color of the progress bar a
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/nprogress.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/nprogress.css" />
         <style type="text/css">
             #nprogress .bar {
                 background: red !important;
@@ -93,7 +93,7 @@ In the next example, the custom CSS only changes the color of the progress bar a
         ...
     </body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/master/dist/index.js"></script>
+    <script src="https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/index.js"></script>
     
     <script type="text/javascript">
         loadProgressBar()
