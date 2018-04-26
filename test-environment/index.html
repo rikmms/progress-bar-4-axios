@@ -24,7 +24,7 @@
       baseURL: 'https://reqres.in/api/',
     });
     loadProgressBar()
-    loadProgressBar(customInstance);
+    loadProgressBar(undefined, customInstance);
 
     function getResource() {
       getRequest('https://reqres.in/api/users?page=1')

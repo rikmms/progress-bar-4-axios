@@ -6,7 +6,7 @@ import axios from 'axios'
 const calculatePercentage = (loaded, total) => (Math.floor(loaded * 1.0) / total)
 
 
-export function loadProgressBar(instance = axios, config) {
+export function loadProgressBar(config, instance = axios) {
   
   let requestsCounter = 0
   

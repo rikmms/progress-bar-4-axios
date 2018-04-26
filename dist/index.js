@@ -108,9 +108,8 @@ var calculatePercentage = function calculatePercentage(loaded, total) {
   return Math.floor(loaded * 1.0) / total;
 };
 
-function loadProgressBar() {
-  var instance = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _axios2.default;
-  var config = arguments[1];
+function loadProgressBar(config) {
+  var instance = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _axios2.default;
 
 
   var requestsCounter = 0;
