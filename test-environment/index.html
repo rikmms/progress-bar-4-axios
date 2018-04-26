@@ -10,6 +10,7 @@
   <body>
     <h3>Use <a href="https://reqres.in/">Reqres</a> for testing...</h3>
     <button onclick="getResource()">Get Resource</button>
+    <button onclick="getResourceWithCustomInstance()">Get Resource using an Axios custom Instance</button>
     <button onclick="resourceNotFound()">Resource Not Found</button>
     <button onclick="createResource()">Create Resource</button>
     <button onclick="unsuccessfulCreateResource()">Unsuccessful Create Resource</button>
@@ -19,11 +20,18 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="../dist/index.js"></script>
   <script type="text/javascript">
-
+    const customInstance = axios.create({
+      baseURL: 'https://reqres.in/api/',
+    });
     loadProgressBar()
+    loadProgressBar(customInstance);
 
     function getResource() {
       getRequest('https://reqres.in/api/users?page=1')
+    }
+    
+    function getResourceWithCustomInstance() {
+      getRequestWithCustomInstance('users?page=1')
     }
 
     function resourceNotFound() {
@@ -58,6 +66,16 @@
 
     function postRequest(url, form) {
       axios.post(url, form)
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
+
+    function getRequestWithCustomInstance(endpoint) {
+      customInstance.get(endpoint)
       .then(function (response) {
         console.log(response)
       })
