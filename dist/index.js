@@ -109,11 +109,13 @@ var calculatePercentage = function calculatePercentage(loaded, total) {
 };
 
 function loadProgressBar(config) {
+  var instance = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _axios2.default;
+
 
   var requestsCounter = 0;
 
   var setupStartProgress = function setupStartProgress() {
-    _axios2.default.interceptors.request.use(function (config) {
+    instance.interceptors.request.use(function (config) {
       requestsCounter++;
       _nprogress2.default.start();
       return config;
@@ -124,8 +126,8 @@ function loadProgressBar(config) {
     var update = function update(e) {
       return _nprogress2.default.inc(calculatePercentage(e.loaded, e.total));
     };
-    _axios2.default.defaults.onDownloadProgress = update;
-    _axios2.default.defaults.onUploadProgress = update;
+    instance.defaults.onDownloadProgress = update;
+    instance.defaults.onUploadProgress = update;
   };
 
   var setupStopProgress = function setupStopProgress() {
@@ -139,7 +141,7 @@ function loadProgressBar(config) {
       return Promise.reject(error);
     };
 
-    _axios2.default.interceptors.response.use(responseFunc, errorFunc);
+    instance.interceptors.response.use(responseFunc, errorFunc);
   };
 
   _nprogress2.default.configure(config);

@@ -24,7 +24,16 @@ Or via CDN:
 ---
 
 ### Usage
-Invoke (only one time) the function: `loadProgressBar(config)`, where the config argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration). 
+Invoke (only one time) the function: `loadProgressBar(config, instance)`.
+
+### Nprogress Config
+the `config` argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress). Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration).
+
+### Custom Axios Instance
+You can pass a [Custom Axios Instance](https://github.com/axios/axios#custom-instance-defaults) as a second argument if needed, the argument is not required. If you don't set the `instance` argument the default axios instance will be used.
+
+
+
 
 __Also, you need to import the CSS file ([nprogress.css](https://cdn.rawgit.com/rikmms/progress-bar-4-axios/0a3acf92/dist/nprogress.css)) that contains the customization of the progress bar.__
 
