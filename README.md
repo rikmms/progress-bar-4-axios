@@ -27,7 +27,7 @@ Or via CDN:
 Invoke (only one time) the function: `loadProgressBar(config, instance)`.
 
 ### Nprogress Config
-the `config` argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress). Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration).
+The `config` argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration).
 
 ### Custom Axios Instance
 You can pass a [Custom Axios Instance](https://github.com/axios/axios#custom-instance-defaults) as a second argument if needed, the argument is not required. If you don't set the `instance` argument the default axios instance will be used.
@@ -120,3 +120,4 @@ Write them in the repository [issues](https://github.com/rikmms/progress-bar-4-a
 
 ### Major changes
 - version 1.1.0 - [Split the CSS](https://webpack.js.org/guides/production/#split-css) into a separate file. With this change, it's necessary to import the minimal CSS file manually.
+- version 1.2.0 - [Support for custom axios instances](https://github.com/rikmms/progress-bar-4-axios/issues/5).
