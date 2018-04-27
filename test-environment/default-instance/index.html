@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TEST ENV</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../dist/nprogress.css" />
+    <link rel="stylesheet" type="text/css" href="../custom-bar-props.css" />
+  </head>
+  <body>
+    <h3>Use <a href="https://reqres.in/">Reqres</a> for testing...</h3>
+    <button onclick="getResource()">Get Resource</button>
+    <button onclick="resourceNotFound()">Resource Not Found</button>
+    <button onclick="createResource()">Create Resource</button>
+    <button onclick="unsuccessfulCreateResource()">Unsuccessful Create Resource</button>
+    <button onclick="delayedResponse()">Delayed Response</button>
+    <button onclick="downloadFile()">Download File</button>
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../../dist/index.js"></script>
+  <script type="text/javascript">
+
+    loadProgressBar()
+
+    function getResource() {
+      getRequest('https://reqres.in/api/users?page=1')
+    }
+
+    function resourceNotFound() {
+      getRequest('https://reqres.in/api/unknown/23')
+    }
+
+    function delayedResponse() {
+      getRequest('https://reqres.in/api/users?delay=3')
+    }
+
+    function createResource() {
+      postRequest('https://reqres.in/api/users', { name: 'morpheus', job: 'leader' })
+    }
+
+    function unsuccessfulCreateResource() {
+      postRequest('https://reqres.in/api/register', { email: 'sydney@fife' })
+    }
+
+    function downloadFile() {
+      getRequest('https://media.giphy.com/media/C6JQPEUsZUyVq/giphy.gif')
+    }
+
+    function getRequest(url) {
+      axios.get(url)
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
+
+    function postRequest(url, form) {
+      axios.post(url, form)
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
+  </script>
+</html>
