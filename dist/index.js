@@ -111,7 +111,6 @@ var calculatePercentage = function calculatePercentage(loaded, total) {
 function loadProgressBar(config) {
   var instance = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _axios2.default;
 
-
   var requestsCounter = 0;
 
   var setupStartProgress = function setupStartProgress() {
@@ -132,12 +131,16 @@ function loadProgressBar(config) {
 
   var setupStopProgress = function setupStopProgress() {
     var responseFunc = function responseFunc(response) {
-      if (--requestsCounter === 0) _nprogress2.default.done();
+      if (--requestsCounter === 0) {
+        _nprogress2.default.done();
+      }
       return response;
     };
 
     var errorFunc = function errorFunc(error) {
-      if (--requestsCounter === 0) _nprogress2.default.done();
+      if (--requestsCounter === 0) {
+        _nprogress2.default.done();
+      }
       return Promise.reject(error);
     };
 
