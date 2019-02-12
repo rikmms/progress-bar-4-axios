@@ -74,6 +74,14 @@ import 'axios-progress-bar/dist/nprogress.css'
 </html>
 ```
 
+### Disable progress bar for specific axios requests
+Sometimes we don't want to show the progress bar for an axios request (like UX which have degradeable typeaheads).  
+To prevent it from popping up for that request, you can pass in `false` for the `progress` parameter in your axios request.
+```js
+axios.get('URL', { progress: false })  
+axios.post('URL', data, { progress: false })
+```
+
 ### Tip
 The CSS file contains the properties from the [nprogress style](https://github.com/rstacruz/nprogress/blob/master/nprogress.css). However, It's possible to override the properties or set new ones with a custom CSS.
 
