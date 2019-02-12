@@ -10,8 +10,13 @@ export function loadProgressBar (config, instance = axios) {
 
   const setupStartProgress = () => {
     instance.interceptors.request.use(config => {
-      requestsCounter++
-      NProgress.start()
+      if (config && config.progress === false) {
+        config.onDownloadProgress = null
+        config.onUploadProgress = null
+      } else {
+        requestsCounter++
+        NProgress.start()
+      }
       return config
     })
   }
@@ -24,14 +29,14 @@ export function loadProgressBar (config, instance = axios) {
 
   const setupStopProgress = () => {
     const responseFunc = response => {
-      if ((--requestsCounter) === 0) {
+      if ((!response || !response.config || !(response.config.progress === false)) && (--requestsCounter) === 0) {
         NProgress.done()
       }
       return response
     }
 
     const errorFunc = error => {
-      if ((--requestsCounter) === 0) {
+      if ((!error || !error.config || !(error.config.progress === false)) && (--requestsCounter) === 0) {
         NProgress.done()
       }
       return Promise.reject(error)
