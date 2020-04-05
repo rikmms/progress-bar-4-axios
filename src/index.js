@@ -17,7 +17,7 @@ export function loadProgressBar (config, instance = axios) {
   }
 
   const setupUpdateProgress = () => {
-    const update = e => NProgress.inc(calculatePercentage(e.loaded, e.total))
+    const update = e => NProgress.inc(calculatePercentage(e.loaded, e.total) || 1)
     instance.defaults.onDownloadProgress = update
     instance.defaults.onUploadProgress = update
   }
