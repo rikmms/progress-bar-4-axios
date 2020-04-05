@@ -123,7 +123,7 @@ function loadProgressBar(config) {
 
   var setupUpdateProgress = function setupUpdateProgress() {
     var update = function update(e) {
-      return _nprogress2.default.inc(calculatePercentage(e.loaded, e.total));
+      return _nprogress2.default.inc(calculatePercentage(e.loaded, e.total) || 1);
     };
     instance.defaults.onDownloadProgress = update;
     instance.defaults.onUploadProgress = update;
