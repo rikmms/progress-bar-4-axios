@@ -115,7 +115,7 @@ In the next example, the custom CSS only changes the color of the progress bar a
 
 ### Disable Progress Bar
 
-set the `progressBar` field to false in axios options.
+Set the `progressBar` field to `false` in axios options.
 
 
 ```
