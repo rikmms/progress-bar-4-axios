@@ -113,6 +113,23 @@ In the next example, the custom CSS only changes the color of the progress bar a
 ```
 ![demo-red](https://raw.githubusercontent.com/rikmms/progress-bar-4-axios/master/demo_axios_progress_bar_red.gif)
 
+### Disable Progress Bar
+
+set the `progressBar` field to false in axios options.
+
+
+```
+axios.get(url, {
+    progressBar: false
+    ...
+})
+
+axios.post(url, data, {
+    progressBar: false
+    ...
+})
+```
+
 ---
 
 ### Bugs/Requests
