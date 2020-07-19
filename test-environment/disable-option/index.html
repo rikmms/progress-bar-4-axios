@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TEST ENV</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../dist/nprogress.css" />
+  <link rel="stylesheet" type="text/css" href="../custom-bar-props.css" />
+</head>
+
+<body>
+  <h3>Use <a href="https://reqres.in/">Reqres</a> for testing... [AXIOS custom instance]</h3>
+  <button onclick="getResource()">Get Resource</button>
+  <button onclick="resourceNotFound()">Resource Not Found</button>
+  <button onclick="createResource()">Create Resource</button>
+  <button onclick="unsuccessfulCreateResource()">Unsuccessful Create Resource</button>
+  <button onclick="delayedResponse()">Delayed Response</button>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../../dist/index.js"></script>
+<script type="text/javascript">
+
+  const customInstance = axios.create({
+    baseURL: 'https://reqres.in/api',
+  });
+
+  loadProgressBar(undefined, customInstance);
+
+  function getResource() {
+    getRequest('/users?page=1')
+  }
+
+  function resourceNotFound() {
+    getRequest('/unknown/23')
+  }
+
+  function delayedResponse() {
+    getRequest('/users?delay=3')
+  }
+
+  function createResource() {
+    postRequest('/users', { name: 'morpheus', job: 'leader' })
+  }
+
+  function unsuccessfulCreateResource() {
+    postRequest('/register', { email: 'sydney@fife' })
+  }
+
+  function getRequest(url) {
+    customInstance.get(url, { progressBar: false })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
+  function postRequest(url, form) {
+    customInstance.post(url, form, { progressBar: false })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
+</script>
+
+</html>
