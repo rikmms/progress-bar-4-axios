@@ -5,27 +5,31 @@ import axios from 'axios'
 
 const calculatePercentage = (loaded, total) => (Math.floor(loaded * 1.0) / total)
 
-export function loadProgressBar (config, instance = axios) {
-  let requestsCounter = 0
+const useProgressBar = (config) => config.progressBar === undefined || config.progressBar
 
+const update = e => NProgress.inc(calculatePercentage(e.loaded, e.total))
+
+export function loadProgressBar(config, instance = axios) {
+  let requestsCounter = 0
+  
   const setupStartProgress = () => {
     instance.interceptors.request.use(config => {
-      requestsCounter++
-      NProgress.start()
+      if (useProgressBar(config)) {
+        config.onDownloadProgress = update
+        config.onUploadProgress = update
+        requestsCounter++
+        NProgress.start()
+      }
       return config
     })
   }
 
-  const setupUpdateProgress = () => {
-    const update = e => NProgress.inc(calculatePercentage(e.loaded, e.total))
-    instance.defaults.onDownloadProgress = update
-    instance.defaults.onUploadProgress = update
-  }
-
   const setupStopProgress = () => {
     const responseFunc = response => {
-      if ((--requestsCounter) === 0) {
-        NProgress.done()
+      if (useProgressBar(response.config)) {
+        if ((--requestsCounter) === 0) {
+          NProgress.done()
+        }
       }
       return response
     }
@@ -42,6 +46,5 @@ export function loadProgressBar (config, instance = axios) {
 
   NProgress.configure(config)
   setupStartProgress()
-  setupUpdateProgress()
   setupStopProgress()
 }
