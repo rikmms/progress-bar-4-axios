@@ -1,6 +1,6 @@
 import 'nprogress/nprogress.css'
 
-import NProgress from 'nprogress'
+import NProgress from 'accessible-nprogress'
 import axios from 'axios'
 
 const calculatePercentage = (loaded, total) => (Math.floor(loaded * 1.0) / total)

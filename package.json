@@ -32,7 +32,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
-    "nprogress": "0.2.0",
+    "accessible-nprogress": "2.0.1",
     "serve": "6.0.6",
     "style-loader": "0.18.2",
     "webpack": "3.5.5"

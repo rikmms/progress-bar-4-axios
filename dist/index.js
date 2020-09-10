@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("axios")) : factory(root["axios"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_4__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -92,13 +92,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.loadProgressBar = loadProgressBar;
 
-__webpack_require__(2);
+var _accessibleNprogress = __webpack_require__(2);
 
-var _nprogress = __webpack_require__(3);
+var _accessibleNprogress2 = _interopRequireDefault(_accessibleNprogress);
 
-var _nprogress2 = _interopRequireDefault(_nprogress);
-
-var _axios = __webpack_require__(4);
+var _axios = __webpack_require__(3);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -116,14 +114,14 @@ function loadProgressBar(config) {
   var setupStartProgress = function setupStartProgress() {
     instance.interceptors.request.use(function (config) {
       requestsCounter++;
-      _nprogress2.default.start();
+      _accessibleNprogress2.default.start();
       return config;
     });
   };
 
   var setupUpdateProgress = function setupUpdateProgress() {
     var update = function update(e) {
-      return _nprogress2.default.inc(calculatePercentage(e.loaded, e.total));
+      return _accessibleNprogress2.default.inc(calculatePercentage(e.loaded, e.total));
     };
     instance.defaults.onDownloadProgress = update;
     instance.defaults.onUploadProgress = update;
@@ -132,14 +130,14 @@ function loadProgressBar(config) {
   var setupStopProgress = function setupStopProgress() {
     var responseFunc = function responseFunc(response) {
       if (--requestsCounter === 0) {
-        _nprogress2.default.done();
+        _accessibleNprogress2.default.done();
       }
       return response;
     };
 
     var errorFunc = function errorFunc(error) {
       if (--requestsCounter === 0) {
-        _nprogress2.default.done();
+        _accessibleNprogress2.default.done();
       }
       return Promise.reject(error);
     };
@@ -147,7 +145,7 @@ function loadProgressBar(config) {
     instance.interceptors.response.use(responseFunc, errorFunc);
   };
 
-  _nprogress2.default.configure(config);
+  _accessibleNprogress2.default.configure(config);
   setupStartProgress();
   setupUpdateProgress();
   setupStopProgress();
@@ -155,501 +153,494 @@ function loadProgressBar(config) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
- * @license MIT */
+/*!
+ * 
+ *   Thu Aug 22 2019 21:41:42 GMT-0500 (CDT)
+ *   Accessible NProgress, (c) 2019 Nicholas Mackey - http://nmackey.com/accessible-nprogress
+ *   @license MIT
+ * 
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define("NProgress", [], factory);
+	else if(typeof exports === 'object')
+		exports["NProgress"] = factory();
+	else
+		root["NProgress"] = factory();
+})(typeof self !== 'undefined' ? self : this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-;(function(root, factory) {
+"use strict";
 
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.NProgress = factory();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _util = __webpack_require__(1);
+
+__webpack_require__(2);
+
+var DEFAULTS = {
+  minimum: 0.08,
+  easing: 'linear',
+  speed: 200,
+  trickle: true,
+  trickleSpeed: 200,
+  showSpinner: true,
+  barSelector: 'div.bar',
+  spinnerSelector: 'div.spinner',
+  parent: 'body',
+  template: '\n    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="1">\n      <div class="peg"></div>\n    </div>\n    <div class="spinner" role="progressbar" aria-valuemin="0" aria-valuemax="1">\n      <div class="spinner-icon"></div>\n    </div>\n  '
+};
+
+var NProgress = function NProgress() {
+  var localSettings = DEFAULTS;
+  var localStatus = null;
+  var initialPromises = 0;
+  var currentPromises = 0;
+
+  /**
+   * @return {boolean} If the progress bar is rendered.
+   */
+  function isRendered() {
+    return !!document.getElementById('nprogress');
   }
 
-})(this, function() {
-  var NProgress = {};
-
-  NProgress.version = '0.2.0';
-
-  var Settings = NProgress.settings = {
-    minimum: 0.08,
-    easing: 'ease',
-    positionUsing: '',
-    speed: 200,
-    trickle: true,
-    trickleRate: 0.02,
-    trickleSpeed: 800,
-    showSpinner: true,
-    barSelector: '[role="bar"]',
-    spinnerSelector: '[role="spinner"]',
-    parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-  };
+  /**
+   * @return {boolean} If there is curent progress.
+   */
+  function isStarted() {
+    return typeof localStatus === 'number';
+  }
 
   /**
-   * Updates configuration.
+   * Renders the progress bar markup based on the `template` setting.
    *
-   *     NProgress.configure({
-   *       minimum: 0.1
-   *     });
+   * @return {HTMLElement} The element rendered.
    */
-  NProgress.configure = function(options) {
-    var key, value;
-    for (key in options) {
-      value = options[key];
-      if (value !== undefined && options.hasOwnProperty(key)) Settings[key] = value;
+  function render() {
+    if (isRendered()) {
+      return document.getElementById('nprogress');
     }
 
-    return this;
-  };
+    document.documentElement.classList.add('nprogress-busy');
 
-  /**
-   * Last number.
-   */
+    var progress = document.createElement('div');
+    progress.id = 'nprogress';
+    progress.innerHTML = localSettings.template;
 
-  NProgress.status = null;
+    var perc = isStarted() ? '-100' : (0, _util.toBarPerc)(localStatus || 0);
+    var bar = progress.querySelector(localSettings.barSelector);
+    bar.style.transform = 'translate3d(' + perc + '%,0,0)';
+    bar.style.transition = 'all 0 linear';
 
-  /**
-   * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
-   *
-   *     NProgress.set(0.4);
-   *     NProgress.set(1.0);
-   */
+    if (!localSettings.showSpinner) {
+      var spinner = progress.querySelector(localSettings.spinnerSelector);
+      if (spinner) {
+        (0, _util.removeElement)(spinner);
+      }
+    }
 
-  NProgress.set = function(n) {
-    var started = NProgress.isStarted();
+    var parent = document.querySelector(localSettings.parent);
+    if (parent) {
+      if (parent !== document.body) {
+        parent.classList.add('nprogress-custom-parent');
+      }
 
-    n = clamp(n, Settings.minimum, 1);
-    NProgress.status = (n === 1 ? null : n);
+      parent.appendChild(progress);
+    }
+    return progress;
+  }
 
-    var progress = NProgress.render(!started),
-        bar      = progress.querySelector(Settings.barSelector),
-        speed    = Settings.speed,
-        ease     = Settings.easing;
+  return {
+    /**
+     * Updates configuration.
+     *
+     * @param {object} options - options to override/set
+     * @return {object} The NProgress object.
+     */
+    configure: function configure(options) {
+      (0, _util.assign)(localSettings, options);
+      return this;
+    },
 
-    progress.offsetWidth; /* Repaint */
 
-    queue(function(next) {
-      // Set positionUsing if it hasn't already been set
-      if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
+    /**
+     * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
+     *
+     * @param {number} value - progress to set
+     * @return {object} The NProgress object.
+     */
+    set: function set(value) {
+      var _this = this;
 
-      // Add transition
-      css(bar, barPositionCSS(n, speed, ease));
+      var clamppedValue = (0, _util.clamp)(value, localSettings.minimum, 1);
+      localStatus = clamppedValue === 1 ? null : clamppedValue;
 
-      if (n === 1) {
-        // Fade out
-        css(progress, { 
-          transition: 'none', 
-          opacity: 1 
-        });
-        progress.offsetWidth; /* Repaint */
+      var progress = render();
 
-        setTimeout(function() {
-          css(progress, { 
-            transition: 'all ' + speed + 'ms linear', 
-            opacity: 0 
-          });
-          setTimeout(function() {
-            NProgress.remove();
-            next();
+      // Repaint
+      progress.offsetWidth; // eslint-disable-line no-unused-expressions
+
+      (0, _util.queue)(function (next) {
+        // Add transition
+        var speed = localSettings.speed,
+            easing = localSettings.easing;
+
+        var bar = progress.querySelector(localSettings.barSelector);
+        bar.setAttribute('aria-valuenow', clamppedValue);
+        bar.style.transform = 'translate3d(' + (0, _util.toBarPerc)(clamppedValue) + '%,0,0)';
+        bar.style.transition = 'all ' + speed + 'ms ' + easing;
+
+        if (clamppedValue === 1) {
+          // Fade out
+          progress.style.transition = 'none';
+          progress.style.opacity = 1;
+
+          // Repaint
+          progress.offsetWidth; // eslint-disable-line no-unused-expressions
+
+          setTimeout(function () {
+            progress.style.transition = 'all ' + speed + 'ms linear';
+            progress.style.opacity = 0;
+            setTimeout(function () {
+              _this.remove();
+              next();
+            }, speed);
           }, speed);
-        }, speed);
-      } else {
-        setTimeout(next, speed);
-      }
-    });
-
-    return this;
-  };
-
-  NProgress.isStarted = function() {
-    return typeof NProgress.status === 'number';
-  };
-
-  /**
-   * Shows the progress bar.
-   * This is the same as setting the status to 0%, except that it doesn't go backwards.
-   *
-   *     NProgress.start();
-   *
-   */
-  NProgress.start = function() {
-    if (!NProgress.status) NProgress.set(0);
-
-    var work = function() {
-      setTimeout(function() {
-        if (!NProgress.status) return;
-        NProgress.trickle();
-        work();
-      }, Settings.trickleSpeed);
-    };
-
-    if (Settings.trickle) work();
-
-    return this;
-  };
-
-  /**
-   * Hides the progress bar.
-   * This is the *sort of* the same as setting the status to 100%, with the
-   * difference being `done()` makes some placebo effect of some realistic motion.
-   *
-   *     NProgress.done();
-   *
-   * If `true` is passed, it will show the progress bar even if its hidden.
-   *
-   *     NProgress.done(true);
-   */
-
-  NProgress.done = function(force) {
-    if (!force && !NProgress.status) return this;
-
-    return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
-  };
-
-  /**
-   * Increments by a random amount.
-   */
-
-  NProgress.inc = function(amount) {
-    var n = NProgress.status;
-
-    if (!n) {
-      return NProgress.start();
-    } else {
-      if (typeof amount !== 'number') {
-        amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
-      }
-
-      n = clamp(n + amount, 0, 0.994);
-      return NProgress.set(n);
-    }
-  };
-
-  NProgress.trickle = function() {
-    return NProgress.inc(Math.random() * Settings.trickleRate);
-  };
-
-  /**
-   * Waits for all supplied jQuery promises and
-   * increases the progress as the promises resolve.
-   *
-   * @param $promise jQUery Promise
-   */
-  (function() {
-    var initial = 0, current = 0;
-
-    NProgress.promise = function($promise) {
-      if (!$promise || $promise.state() === "resolved") {
-        return this;
-      }
-
-      if (current === 0) {
-        NProgress.start();
-      }
-
-      initial++;
-      current++;
-
-      $promise.always(function() {
-        current--;
-        if (current === 0) {
-            initial = 0;
-            NProgress.done();
         } else {
-            NProgress.set((initial - current) / initial);
+          setTimeout(next, speed);
         }
       });
 
       return this;
-    };
-
-  })();
-
-  /**
-   * (Internal) renders the progress bar markup based on the `template`
-   * setting.
-   */
-
-  NProgress.render = function(fromStart) {
-    if (NProgress.isRendered()) return document.getElementById('nprogress');
-
-    addClass(document.documentElement, 'nprogress-busy');
-    
-    var progress = document.createElement('div');
-    progress.id = 'nprogress';
-    progress.innerHTML = Settings.template;
-
-    var bar      = progress.querySelector(Settings.barSelector),
-        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
-        parent   = document.querySelector(Settings.parent),
-        spinner;
-    
-    css(bar, {
-      transition: 'all 0 linear',
-      transform: 'translate3d(' + perc + '%,0,0)'
-    });
-
-    if (!Settings.showSpinner) {
-      spinner = progress.querySelector(Settings.spinnerSelector);
-      spinner && removeElement(spinner);
-    }
-
-    if (parent != document.body) {
-      addClass(parent, 'nprogress-custom-parent');
-    }
-
-    parent.appendChild(progress);
-    return progress;
-  };
-
-  /**
-   * Removes the element. Opposite of render().
-   */
-
-  NProgress.remove = function() {
-    removeClass(document.documentElement, 'nprogress-busy');
-    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
-    var progress = document.getElementById('nprogress');
-    progress && removeElement(progress);
-  };
-
-  /**
-   * Checks if the progress bar is rendered.
-   */
-
-  NProgress.isRendered = function() {
-    return !!document.getElementById('nprogress');
-  };
-
-  /**
-   * Determine which positioning CSS rule to use.
-   */
-
-  NProgress.getPositioningCSS = function() {
-    // Sniff on document.body.style
-    var bodyStyle = document.body.style;
-
-    // Sniff prefixes
-    var vendorPrefix = ('WebkitTransform' in bodyStyle) ? 'Webkit' :
-                       ('MozTransform' in bodyStyle) ? 'Moz' :
-                       ('msTransform' in bodyStyle) ? 'ms' :
-                       ('OTransform' in bodyStyle) ? 'O' : '';
-
-    if (vendorPrefix + 'Perspective' in bodyStyle) {
-      // Modern browsers with 3D support, e.g. Webkit, IE10
-      return 'translate3d';
-    } else if (vendorPrefix + 'Transform' in bodyStyle) {
-      // Browsers without 3D support, e.g. IE9
-      return 'translate';
-    } else {
-      // Browsers without translate() support, e.g. IE7-8
-      return 'margin';
-    }
-  };
-
-  /**
-   * Helpers
-   */
-
-  function clamp(n, min, max) {
-    if (n < min) return min;
-    if (n > max) return max;
-    return n;
-  }
-
-  /**
-   * (Internal) converts a percentage (`0..1`) to a bar translateX
-   * percentage (`-100%..0%`).
-   */
-
-  function toBarPerc(n) {
-    return (-1 + n) * 100;
-  }
+    },
 
 
-  /**
-   * (Internal) returns the correct CSS for changing the bar's
-   * position given an n percentage, and speed and ease from Settings
-   */
+    /**
+     * Shows the progress bar.
+     * This is the same as setting the status to 0%, except that it doesn't go backwards.
+     *
+     * @return {object} The NProgress object.
+     */
+    start: function start() {
+      var _this2 = this;
 
-  function barPositionCSS(n, speed, ease) {
-    var barCSS;
-
-    if (Settings.positionUsing === 'translate3d') {
-      barCSS = { transform: 'translate3d('+toBarPerc(n)+'%,0,0)' };
-    } else if (Settings.positionUsing === 'translate') {
-      barCSS = { transform: 'translate('+toBarPerc(n)+'%,0)' };
-    } else {
-      barCSS = { 'margin-left': toBarPerc(n)+'%' };
-    }
-
-    barCSS.transition = 'all '+speed+'ms '+ease;
-
-    return barCSS;
-  }
-
-  /**
-   * (Internal) Queues a function to be executed.
-   */
-
-  var queue = (function() {
-    var pending = [];
-    
-    function next() {
-      var fn = pending.shift();
-      if (fn) {
-        fn(next);
-      }
-    }
-
-    return function(fn) {
-      pending.push(fn);
-      if (pending.length == 1) next();
-    };
-  })();
-
-  /**
-   * (Internal) Applies css properties to an element, similar to the jQuery 
-   * css method.
-   *
-   * While this helper does assist with vendor prefixed property names, it 
-   * does not perform any manipulation of values prior to setting styles.
-   */
-
-  var css = (function() {
-    var cssPrefixes = [ 'Webkit', 'O', 'Moz', 'ms' ],
-        cssProps    = {};
-
-    function camelCase(string) {
-      return string.replace(/^-ms-/, 'ms-').replace(/-([\da-z])/gi, function(match, letter) {
-        return letter.toUpperCase();
-      });
-    }
-
-    function getVendorProp(name) {
-      var style = document.body.style;
-      if (name in style) return name;
-
-      var i = cssPrefixes.length,
-          capName = name.charAt(0).toUpperCase() + name.slice(1),
-          vendorName;
-      while (i--) {
-        vendorName = cssPrefixes[i] + capName;
-        if (vendorName in style) return vendorName;
+      if (!localStatus) {
+        this.set(0);
       }
 
-      return name;
-    }
+      var work = function work() {
+        setTimeout(function () {
+          if (!localStatus) {
+            return;
+          }
+          _this2.inc();
+          work();
+        }, localSettings.trickleSpeed);
+      };
 
-    function getStyleProp(name) {
-      name = camelCase(name);
-      return cssProps[name] || (cssProps[name] = getVendorProp(name));
-    }
+      if (localSettings.trickle) {
+        work();
+      }
 
-    function applyCss(element, prop, value) {
-      prop = getStyleProp(prop);
-      element.style[prop] = value;
-    }
+      return this;
+    },
 
-    return function(element, properties) {
-      var args = arguments,
-          prop, 
-          value;
 
-      if (args.length == 2) {
-        for (prop in properties) {
-          value = properties[prop];
-          if (value !== undefined && properties.hasOwnProperty(prop)) applyCss(element, prop, value);
+    /**
+     * Hides the progress bar.
+     * This is the *sort of* the same as setting the status to 100%, with the
+     * difference being `done()` makes some placebo effect of some realistic motion.
+     *
+     * @param {boolean} force - show the progress bar complete even if its hidden
+     * @return {object} The NProgress object.
+     */
+    done: function done(force) {
+      if (!force && !localStatus) {
+        return this;
+      }
+
+      var halfRandom = 0.5 * Math.random();
+      return this.inc(0.3 + halfRandom).set(1);
+    },
+
+
+    /**
+     * Increments progress bar by given amount.
+     *
+     * @param {number} [amount] - amount to increment the progress bar by
+     * @return {object} The NProgress object.
+     */
+    inc: function inc() {
+      var amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _util.randomInc)(localStatus);
+
+      if (!localStatus) {
+        return this.start();
+      }
+
+      var clamppedStatus = (0, _util.clamp)(localStatus + amount, 0, 0.994);
+      return this.set(clamppedStatus);
+    },
+
+
+    /**
+     * Removes the element. Opposite of render().
+     */
+    remove: function remove() {
+      document.documentElement.classList.remove('nprogress-busy');
+      document.querySelector(localSettings.parent).classList.remove('nprogress-custom-parent');
+      var progress = document.getElementById('nprogress');
+      if (progress) {
+        (0, _util.removeElement)(progress);
+      }
+    },
+
+
+    /**
+     * Waits for all supplied promises and increases the progress as the promises resolve.
+     *
+     * @param $promise Promise
+     * @return {object} The NProgress object.
+     */
+    promise: function promise($promise) {
+      var _this3 = this;
+
+      if (currentPromises === 0) {
+        this.start();
+      }
+
+      initialPromises += 1;
+      currentPromises += 1;
+
+      var promiseResolution = function promiseResolution() {
+        currentPromises -= 1;
+        if (currentPromises === 0) {
+          initialPromises = 0;
+          _this3.done();
+        } else {
+          _this3.set((initialPromises - currentPromises) / initialPromises);
         }
-      } else {
-        applyCss(element, args[1], args[2]);
-      }
+      };
+
+      $promise.then(promiseResolution).catch(promiseResolution);
+
+      return this;
+    },
+
+
+    get status() {
+      return localStatus;
+    },
+
+    get settings() {
+      return localSettings;
     }
-  })();
+  };
+};
 
-  /**
-   * (Internal) Determines if an element or space separated list of class names contains a class name.
-   */
-
-  function hasClass(element, name) {
-    var list = typeof element == 'string' ? element : classList(element);
-    return list.indexOf(' ' + name + ' ') >= 0;
-  }
-
-  /**
-   * (Internal) Adds a class to an element.
-   */
-
-  function addClass(element, name) {
-    var oldList = classList(element),
-        newList = oldList + name;
-
-    if (hasClass(oldList, name)) return; 
-
-    // Trim the opening space.
-    element.className = newList.substring(1);
-  }
-
-  /**
-   * (Internal) Removes a class from an element.
-   */
-
-  function removeClass(element, name) {
-    var oldList = classList(element),
-        newList;
-
-    if (!hasClass(element, name)) return;
-
-    // Replace the class name.
-    newList = oldList.replace(' ' + name + ' ', ' ');
-
-    // Trim the opening and closing spaces.
-    element.className = newList.substring(1, newList.length - 1);
-  }
-
-  /**
-   * (Internal) Gets a space separated list of the class names on the element. 
-   * The list is wrapped with a single space on each end to facilitate finding 
-   * matches within the list.
-   */
-
-  function classList(element) {
-    return (' ' + (element.className || '') + ' ').replace(/\s+/gi, ' ');
-  }
-
-  /**
-   * (Internal) Removes an element from the DOM.
-   */
-
-  function removeElement(element) {
-    element && element.parentNode && element.parentNode.removeChild(element);
-  }
-
-  return NProgress;
-});
-
-
+exports.default = NProgress();
 
 /***/ }),
-/* 4 */
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.assign = assign;
+exports.clamp = clamp;
+exports.toBarPerc = toBarPerc;
+exports.randomInc = randomInc;
+exports.removeElement = removeElement;
+/**
+ * Substitute for Object.assign()
+ * Modified from: https://stackoverflow.com/a/30498430
+ *
+ * @param {object} target - target object to merge to
+ * @param {...object} objectsToMerge - arbitrary number of objects to merge into 'target'
+ * @return {object} target merged object
+ */
+function assign(target) {
+  var retTarget = Object(target);
+  for (var i = 0; i < (arguments.length <= 1 ? 0 : arguments.length - 1); i += 1) {
+    var obj = arguments.length <= i + 1 ? undefined : arguments[i + 1];
+    var keys = Object.keys(obj);
+    for (var j = 0; j < keys.length; j += 1) {
+      retTarget[keys[j]] = obj[keys[j]];
+    }
+  }
+  return retTarget;
+}
+
+/**
+ * Ensure n is between min & max
+ *
+ * @param {number} value - number to clamp
+ * @param {number} min - minimum
+ * @param {number} max - maximum
+ * @return {number} clampped value
+ */
+function clamp(value, min, max) {
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+}
+
+/**
+ * Converts a percentage (`0..1`) to a bar translateX
+ * percentage (`-100%..0%`).
+ *
+ * @param {number} value - percentage to convert
+ * @return {number} percentage
+ */
+function toBarPerc(value) {
+  return (-1 + value) * 100;
+}
+
+/**
+ * Gets an increment to use based on status
+ *
+ * @param {number} status - current status of the progress bar
+ * @return {number} increment
+ */
+function randomInc(status) {
+  if (status >= 0 && status < 0.2) {
+    return 0.1;
+  } else if (status >= 0.2 && status < 0.5) {
+    return 0.04;
+  } else if (status >= 0.5 && status < 0.8) {
+    return 0.02;
+  } else if (status >= 0.8 && status < 0.99) {
+    return 0.005;
+  }
+  return 0;
+}
+
+/**
+ * Removes an element from the DOM.
+ *
+ * @param {HTMLElement} element - element to remove
+ */
+function removeElement(element) {
+  if (element && element.parentNode) {
+    element.parentNode.removeChild(element);
+  }
+}
+
+/**
+ * Queues a function to be executed.
+ *
+ * @return {function}
+ */
+var queue = exports.queue = function () {
+  var functionQueue = [];
+
+  function next() {
+    var fn = functionQueue.shift();
+    if (fn) {
+      fn(next);
+    }
+  }
+
+  return function (fn) {
+    functionQueue.push(fn);
+    if (functionQueue.length === 1) {
+      next();
+    }
+  };
+}();
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ])["default"];
+});
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ })
 /******/ ]);
