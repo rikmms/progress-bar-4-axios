@@ -1,4 +1,4 @@
-import 'nprogress/nprogress.css'
+import './nprogress.css'
 
 import NProgress from 'accessible-nprogress'
 import axios from 'axios'

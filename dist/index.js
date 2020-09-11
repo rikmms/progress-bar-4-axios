@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("axios")) : factory(root["axios"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_4__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -92,11 +92,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.loadProgressBar = loadProgressBar;
 
-var _accessibleNprogress = __webpack_require__(2);
+__webpack_require__(2);
+
+var _accessibleNprogress = __webpack_require__(3);
 
 var _accessibleNprogress2 = _interopRequireDefault(_accessibleNprogress);
 
-var _axios = __webpack_require__(3);
+var _axios = __webpack_require__(4);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -153,6 +155,12 @@ function loadProgressBar(config) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -637,10 +645,10 @@ var queue = exports.queue = function () {
 });
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
 
 /***/ })
 /******/ ]);
