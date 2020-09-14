@@ -25,11 +25,9 @@ Or via CDN:
 
 ### Usage
 This is to be done in the main.js folder of your portal, and will be called like this: 
-
 `import axios from '@axios'` and 
 `import { loadProgressBar } from '@technologyadvice/axios-progress-bar'` 
-will be added to the imports
-`loadProgressBar({}, axios)` will be called in main.js.
+will be added to the imports. Then, `loadProgressBar({}, axios)` will be called in main.js.
 
 ### Nprogress Config
 The `config` argument is the configuration object for the [nprogress](https://www.npmjs.com/package/nprogress) and is not required. Its properties can be seen [here](https://www.npmjs.com/package/nprogress#configuration).
