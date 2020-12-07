@@ -8,6 +8,15 @@ const calculatePercentage = (loaded, total) => (Math.floor(loaded * 1.0) / total
 export function loadProgressBar (config, instance = axios) {
   let requestsCounter = 0
 
+  config.template = `
+      <div class="bar" role="progressbar" aria-label="Loading progress" aria-valuemin="0" aria-valuemax="1">
+          <div class="peg"></div>
+      </div>
+      <div class="spinner" role="progressbar" aria-label="Loading spinner" aria-valuemin="0" aria-valuemax="1">
+          <div class="spinner-icon"></div>
+      </div>
+  `
+
   const setupStartProgress = () => {
     instance.interceptors.request.use(config => {
       requestsCounter++
