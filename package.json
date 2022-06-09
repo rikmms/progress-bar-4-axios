@@ -11,6 +11,7 @@
     "type": "git",
     "url": "https://github.com/rikmms/progress-bar-4-axios.git"
   },
+  "types": "./index.d.ts",
   "author": "rikmms <sousa.ricardo10@gmail.com>",
   "license": "MIT",
   "keywords": [
